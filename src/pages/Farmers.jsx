@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Users, BookOpen, CheckCircle, ChevronDown, ArrowRight, Sprout } from 'lucide-react'
+import { Users, BookOpen, CheckCircle, ChevronDown, ArrowRight, Sprout, Star } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import StaggerGrid, { StaggerItem } from '../components/StaggerGrid'
 import { faqItems } from '../data/products'
@@ -171,6 +171,64 @@ export default function Farmers() {
         </div>
       </section>
 
+      {/* SUCCESS STORIES */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-green-950/95" />
+        <div className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: 'radial-gradient(circle at 60% 30%, #22C55E 0%, transparent 50%), radial-gradient(circle at 30% 70%, #15803D 0%, transparent 50%)' }}
+        />
+        <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl max-sm:hidden" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl max-sm:hidden" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-primary-200 text-sm mb-6">
+              <Star className="w-4 h-4" />
+              Real Results
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-green-300">Success</span> Stories
+            </h2>
+            <p className="text-primary-200 text-lg max-w-2xl mx-auto leading-relaxed">
+              Farmers who transformed their land with organic practices — real people, real results.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  name: 'Mohamed Rishad',
+                  village: 'Batticaloa',
+                  story: 'After switching to Serendib\'s organic compost, his rice yield increased by 60% while input costs dropped by 40%. His soil is healthier than ever.',
+                  crop: 'Rice Farmer',
+                },
+                {
+                  name: 'S. Tharani',
+                  village: 'Ampara',
+                  story: 'Started with our soil consultation service and a custom organic plan. Now runs a thriving vegetable garden supplying local markets with chemical-free produce.',
+                  crop: 'Vegetable Grower',
+                },
+              ].map((story, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/10 hover:bg-white/15 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-green-400 flex items-center justify-center text-primary-900 font-bold text-lg">
+                      {story.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold">{story.name}</div>
+                      <div className="text-primary-300 text-sm">{story.crop}, {story.village}</div>
+                    </div>
+                  </div>
+                  <p className="text-primary-200 leading-relaxed">&ldquo;{story.story}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section-padding bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,51 +256,6 @@ export default function Farmers() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* SUCCESS STORIES */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800 via-primary-900 to-green-950" />
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle at 50% 30%, #22C55E 0%, transparent 50%), radial-gradient(circle at 30% 70%, #15803D 0%, transparent 50%)' }}
-        />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-3">Success Stories</h2>
-            <p className="text-primary-200 max-w-xl mx-auto">Farmers who transformed their land with organic practices</p>
-          </Reveal>
-          <Reveal>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  name: 'Mohamed Rishad',
-                  village: 'Batticaloa',
-                  story: 'After switching to Serendib\'s organic compost, his rice yield increased by 60% while input costs dropped by 40%. His soil is healthier than ever.',
-                  crop: 'Rice Farmer',
-                },
-                {
-                  name: 'S. Tharani',
-                  village: 'Ampara',
-                  story: 'Started with our soil consultation service and a custom organic plan. Now runs a thriving vegetable garden supplying local markets with chemical-free produce.',
-                  crop: 'Vegetable Grower',
-                },
-              ].map((story, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-primary-600/30 flex items-center justify-center text-white font-bold">
-                      {story.name.charAt(0)}
-                    </div>
-                    <div>
-                      <div className="text-white font-medium text-sm">{story.name}</div>
-                      <div className="text-primary-300 text-xs">{story.crop}, {story.village}</div>
-                    </div>
-                  </div>
-                  <p className="text-primary-200 text-sm leading-relaxed">&ldquo;{story.story}&rdquo;</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
     </>

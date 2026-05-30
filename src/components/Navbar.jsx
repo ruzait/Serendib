@@ -23,7 +23,8 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    setMobileOpen(false)
+    const id = setTimeout(() => setMobileOpen(false), 0)
+    return () => clearTimeout(id)
   }, [location])
 
   return (
@@ -83,7 +84,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`md:hidden transition-all duration-400 overflow-hidden ${
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
         mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="bg-white/95 backdrop-blur-md mx-4 mt-2 rounded-3xl shadow-xl p-4 border border-gray-100">

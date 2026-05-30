@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Phone, Mail, MapPin, MessageCircle, Send, ArrowRight, Globe } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle, Send, Globe } from 'lucide-react'
 import Reveal from '../components/Reveal'
 
 export default function Contact() {

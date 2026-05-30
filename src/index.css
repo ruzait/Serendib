@@ -64,9 +64,6 @@
     @apply bg-gradient-to-b from-primary-900/60 to-primary-900/90;
   }
 
-  .badge {
-    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

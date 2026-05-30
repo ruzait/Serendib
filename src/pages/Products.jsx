@@ -80,9 +80,7 @@ export default function Products() {
                   <StaggerItem key={i}>
                     <div className="card h-full flex flex-col">
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${activeCategory.color} flex items-center justify-center mb-4`}>
-                        {(activeCategory.icon === 'Sprout' && <Sprout className="w-6 h-6 text-white" />) ||
-                          (activeCategory.icon === 'Wheat' && <Wheat className="w-6 h-6 text-white" />) ||
-                          (activeCategory.icon === 'Leaf' && <Leaf className="w-6 h-6 text-white" />)}
+                        {(() => { const Icon = iconMap[activeCategory.icon] || Leaf; return <Icon className="w-6 h-6 text-white" /> })()}
                       </div>
                       <h3 className="font-heading text-xl font-bold text-primary-900 mb-2">{item.name}</h3>
                       <p className="text-primary-600 text-sm leading-relaxed mb-4 flex-1">{item.description}</p>

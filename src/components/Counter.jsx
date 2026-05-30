@@ -12,9 +12,8 @@ export default function Counter({ label, value, suffix, icon }) {
   const [count, setCount] = useState(0)
   const Icon = iconMap[icon] || Users
 
-  const useK = value >= 1000
-  const target = useK ? value / 1000 : value
-  const displaySuffix = useK ? 'K' + suffix : suffix
+  const target = value
+  const displaySuffix = suffix
 
   useEffect(() => {
     if (!isInView) return

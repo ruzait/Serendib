@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ShieldCheck, Sprout, ArrowRight, Award, Leaf, MapPin } from 'lucide-react'
+import { ShieldCheck, Sprout, ArrowRight, Award, Leaf } from 'lucide-react'
 import Reveal from '../components/Reveal'
 
 const milestones = [
