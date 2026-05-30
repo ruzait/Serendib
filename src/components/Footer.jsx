@@ -18,8 +18,12 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="relative bg-primary-900 text-white overflow-hidden">
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1546845776-dcdf70fd09e3?w=1920&q=80" alt="" className="w-full h-full object-cover blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-900/80 via-primary-900/75 to-primary-900/85" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">

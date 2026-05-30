@@ -25,7 +25,7 @@ export default function Farmers() {
       <section className="relative pt-28 pb-20 overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1746106388675-4a5cb72db549?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-green-950/90" />
           <div className="absolute inset-0 opacity-10"

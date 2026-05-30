@@ -35,7 +35,7 @@ export default function Gallery() {
       <section className="relative pt-28 pb-20 overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1677147269347-45efc61d242a?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-green-950/90" />
           <div className="absolute inset-0 opacity-10"

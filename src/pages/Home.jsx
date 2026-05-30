@@ -32,21 +32,21 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen pt-24 sm:pt-28 lg:pt-36 pb-12 md:pb-16">
+      <section className="relative min-h-screen pt-24 sm:pt-28 lg:pt-36 pb-12 md:pb-16 flex flex-col">
         <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1664889788538-726f58620607?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 via-primary-800/70 to-transparent" />
           <div className="absolute inset-0 opacity-20"
             style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, #22C55E 0%, transparent 40%), radial-gradient(circle at 80% 70%, #15803D 0%, transparent 40%), radial-gradient(circle at 50% 50%, #166534 0%, transparent 60%)' }}
           />
-          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary-500/5 blur-3xl" />
-          <div className="absolute bottom-40 right-20 w-80 h-80 rounded-full bg-green-500/5 blur-3xl" />
-          <div className="absolute top-1/2 left-1/3 w-96 h-96 rounded-full bg-primary-400/5 blur-3xl" />
+          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary-500/5 blur-3xl max-sm:hidden" />
+          <div className="absolute bottom-40 right-20 w-80 h-80 rounded-full bg-green-500/5 blur-3xl max-sm:hidden" />
+          <div className="absolute top-1/2 left-1/3 w-96 h-96 rounded-full bg-primary-400/5 blur-3xl max-sm:hidden" />
         </motion.div>
 
-          <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div style={{ y: contentY }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center">
             <motion.div
               variants={stagger}
               initial="hidden"
@@ -155,7 +155,7 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80"
+                    src="https://images.unsplash.com/photo-1558005530-a7958896ec60?w=700&q=80"
                     alt="Organic farm landscape"
                     className="w-full h-full object-cover"
                   />
@@ -226,14 +226,14 @@ export default function Home() {
       {/* CTA BANNER */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1546845776-dcdf70fd09e3?w=1920&q=80" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-green-950/95" />
         <div className="absolute inset-0 opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle at 60% 30%, #22C55E 0%, transparent 50%), radial-gradient(circle at 30% 70%, #15803D 0%, transparent 50%)' }}
         />
-        <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl" />
+        <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl max-sm:hidden" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl max-sm:hidden" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-primary-200 text-sm mb-6">
@@ -282,19 +282,19 @@ export default function Home() {
               {
                 title: 'Organic Fertilizers',
                 desc: 'Compost, liquid bio-fertilizers, and soil enrichment solutions for sustainable farming.',
-                img: 'https://images.unsplash.com/photo-1592982537447-6f2a6a0c7b1f?w=400&q=80',
+                img: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=400&q=80',
                 color: 'from-primary-500 to-primary-700',
               },
               {
                 title: 'Farm Produce',
                 desc: 'Fresh organic vegetables, seasonal crops, and farm produce distribution across Sri Lanka.',
-                img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&q=80',
+                img: 'https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0?w=400&q=80',
                 color: 'from-accent to-yellow-600',
               },
               {
                 title: 'Agricultural Services',
                 desc: 'Soil consultation, organic farming guidance, and comprehensive farmer support programs.',
-                img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&q=80',
+                img: 'https://images.unsplash.com/photo-1505471768190-275e2ad7b3f9?w=400&q=80',
                 color: 'from-soil to-soil-light',
               },
             ].map((item, i) => (
@@ -336,12 +336,12 @@ export default function Home() {
             {[
               'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&q=80',
               'https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=300&q=80',
-              'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&q=80',
+              'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?w=300&q=80',
               'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=300&q=80',
               'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=300&q=80',
               'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=80',
-              'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=300&q=80',
-              'https://images.unsplash.com/photo-1592982537447-6f2a6a0c7b1f?w=300&q=80',
+              'https://images.unsplash.com/photo-1557093793-d149a38a1be8?w=300&q=80',
+              'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&q=80',
             ].map((src, i) => (
               <StaggerItem key={i}>
                 <div className="aspect-square rounded-2xl overflow-hidden group cursor-pointer">

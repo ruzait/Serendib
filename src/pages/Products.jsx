@@ -23,7 +23,7 @@ export default function Products() {
       <section className="relative pt-28 pb-20 overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c7b1f?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1505471768190-275e2ad7b3f9?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-green-950/90" />
           <div className="absolute inset-0 opacity-10"
@@ -106,14 +106,14 @@ export default function Products() {
       {/* INQUIRY CTA */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1651981350249-6173caeeb660?w=1920&q=80" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-green-950/95" />
         <div className="absolute inset-0 opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle at 40% 50%, #22C55E 0%, transparent 50%), radial-gradient(circle at 70% 40%, #15803D 0%, transparent 50%)' }}
         />
-        <div className="absolute top-10 right-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl" />
+        <div className="absolute top-10 right-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl max-sm:hidden" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl max-sm:hidden" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-primary-200 text-sm mb-6">
@@ -154,13 +154,13 @@ export default function Products() {
           </Reveal>
           <StaggerGrid className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              'https://images.unsplash.com/photo-1592982537447-6f2a6a0c7b1f?w=300&q=80',
-              'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&q=80',
-              'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=300&q=80',
-              'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=300&q=80',
+              'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&q=80',
+              'https://images.unsplash.com/photo-1546845776-dcdf70fd09e3?w=300&q=80',
+              'https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0?w=300&q=80',
+              'https://images.unsplash.com/photo-1651981350249-6173caeeb660?w=300&q=80',
               'https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=300&q=80',
               'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=300&q=80',
-              'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=300&q=80',
+              'https://images.unsplash.com/photo-1557703913-d2b0cbf82722?w=300&q=80',
               'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=80',
             ].map((src, i) => (
               <StaggerItem key={i}>

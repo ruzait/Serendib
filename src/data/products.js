@@ -75,13 +75,13 @@ export const productCategories = [
 
 export const galleryImages = [
   { id: 1, src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80', alt: 'Organic farm landscape', category: 'farm' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=80', alt: 'Fresh organic vegetables', category: 'products' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1592982537447-6f2a6a0c7b1f?w=600&q=80', alt: 'Compost production', category: 'products' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1609412058473-c199497c3c5d?w=600&q=80', alt: 'Rice paddy field', category: 'products' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=600&q=80', alt: 'Compost production', category: 'products' },
   { id: 4, src: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80', alt: 'Farmers working together', category: 'team' },
   { id: 5, src: 'https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=600&q=80', alt: 'Farmers harvesting', category: 'team' },
   { id: 6, src: 'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=600&q=80', alt: 'Organic farming field', category: 'farm' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=600&q=80', alt: 'Agricultural event', category: 'events' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80', alt: 'Fresh produce basket', category: 'products' },
+  { id: 7, src: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?w=600&q=80', alt: 'Paddy cultivation', category: 'events' },
+  { id: 8, src: 'https://images.unsplash.com/photo-1519082572439-7ed19908e47e?w=600&q=80', alt: 'Golden rice field', category: 'products' },
   { id: 9, src: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&q=80', alt: 'Soil preparation', category: 'farm' },
   { id: 10, src: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80', alt: 'Organic fertilizer application', category: 'products' },
   { id: 11, src: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&q=80', alt: 'Community farming', category: 'events' },

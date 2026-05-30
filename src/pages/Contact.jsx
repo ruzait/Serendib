@@ -31,7 +31,7 @@ export default function Contact() {
       <section className="relative pt-28 pb-20 overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1544644181-af0e1e14916f?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-green-950/90" />
           <div className="absolute inset-0 opacity-10"

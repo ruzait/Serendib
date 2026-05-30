@@ -28,7 +28,7 @@ export default function About() {
       <section className="relative pt-28 pb-20 overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+<img src="https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0?w=1920&q=80" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-green-950/90" />
           <div className="absolute inset-0 opacity-10"
@@ -179,14 +179,14 @@ export default function About() {
       {/* WHY ORGANIC */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=1920&q=80" alt="" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1609412058473-c199497c3c5d?w=1920&q=80" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-green-950/95" />
         <div className="absolute inset-0 opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #22C55E 0%, transparent 50%), radial-gradient(circle at 70% 60%, #15803D 0%, transparent 50%)' }}
         />
-        <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl" />
+        <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl max-sm:hidden" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-green-500/10 blur-3xl max-sm:hidden" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-primary-200 text-sm mb-6">

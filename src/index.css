@@ -7,8 +7,12 @@
     scroll-behavior: smooth;
   }
 
+  #root {
+    overflow-x: hidden;
+  }
+
   body {
-    @apply font-body text-primary-900 bg-cream antialiased overflow-x-hidden;
+    @apply font-body text-primary-900 bg-cream antialiased;
   }
 
   h1, h2, h3, h4 {
