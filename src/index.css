@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-primary-900 bg-cream antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-primary-700 text-white px-6 py-3 rounded-2xl
+           font-medium transition-all duration-300 hover:bg-primary-800
+           hover:shadow-lg hover:shadow-primary-700/25 active:scale-[0.98] cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-primary-700 border-2 border-primary-500
+           px-6 py-3 rounded-2xl font-medium transition-all duration-300
+           hover:bg-primary-50 hover:border-primary-600 hover:shadow-lg cursor-pointer;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-2xl
+           font-medium transition-all duration-300 hover:bg-yellow-600
+           hover:shadow-lg hover:shadow-yellow-600/25 active:scale-[0.98] cursor-pointer;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl p-6 shadow-md border border-primary-100/50 transition-all duration-300
+           hover:shadow-xl hover:border-primary-200 cursor-pointer;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary-900;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-primary-600 max-w-2xl font-body;
+  }
+
+  .gradient-overlay {
+    @apply bg-gradient-to-b from-primary-900/60 to-primary-900/90;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
