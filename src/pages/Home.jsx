@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useMotionValue, animate } from 'framer-motion'
-import { ArrowRight, ShieldCheck, Sprout, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Sprout, Quote } from 'lucide-react'
 
 const InstagramIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -497,38 +497,6 @@ function TestimonialCarousel() {
       aria-roledescription="carousel"
     >
       <div className="relative">
-        {totalSlides > 1 && (
-          <>
-            <button
-              onClick={prev}
-              className="absolute -left-3 xl:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white shadow-lg shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-600 hover:text-primary-800 hover:border-primary-300 hover:shadow-xl transition-all duration-200 cursor-pointer max-md:hidden"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              className="absolute -right-3 xl:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white shadow-lg shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-600 hover:text-primary-800 hover:border-primary-300 hover:shadow-xl transition-all duration-200 cursor-pointer max-md:hidden"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-            <button
-              onClick={prev}
-              className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-md shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-700 transition-all duration-200 cursor-pointer"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={next}
-              className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-md shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-700 transition-all duration-200 cursor-pointer"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </>
-        )}
         <div ref={trackRef} className="overflow-hidden rounded-2xl">
           <motion.div
             className="flex cursor-grab active:cursor-grabbing"
