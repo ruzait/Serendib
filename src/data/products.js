@@ -117,6 +117,20 @@ export const testimonials = [
     content: 'Their liquid bio fertilizer is amazing for home gardens. My vegetables are thriving and chemical-free.',
     rating: 4,
   },
+  {
+    id: 5,
+    name: 'N. Ganesan',
+    role: 'Tea Plantation Manager, Nuwara Eliya',
+    content: 'Serendib\'s soil enrichment program transformed our tea estate. Higher quality leaves and healthier plants across all sections.',
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: 'M. Izzath',
+    role: 'Organic Farmer, Kalmunai',
+    content: 'I\'ve been with Serendib since 2020. Their consistent support and quality compost have made organic farming profitable and sustainable for my family.',
+    rating: 5,
+  },
 ]
 
 export const impactStats = [

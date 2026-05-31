@@ -1,6 +1,7 @@
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ShieldCheck, Sprout } from 'lucide-react'
+import { motion, useScroll, useTransform, useMotionValue, animate } from 'framer-motion'
+import { ArrowRight, ShieldCheck, Sprout, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const InstagramIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -362,39 +363,245 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="section-padding bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-12">
-            <h2 className="section-title mb-4">What Farmers Say</h2>
-            <p className="section-subtitle mx-auto">Real stories from our farming community</p>
+      <section className="relative py-20 md:py-24 lg:py-28 overflow-hidden" style={{ backgroundColor: '#F0FDF4' }}>
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2315803D' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <Reveal className="text-center mb-14 md:mb-16">
+            <h2 className="font-heading font-bold text-[32px] md:text-[44px] lg:text-[56px] text-primary-900 leading-tight mb-4">
+              What Farmers Say
+            </h2>
+            <p className="text-primary-600 text-base md:text-lg max-w-2xl mx-auto">
+              Real stories from our farming community
+            </p>
           </Reveal>
-          <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map((t) => (
-              <StaggerItem key={t.id}>
-                <div className="card h-full flex flex-col">
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} className={`w-4 h-4 ${i < t.rating ? 'text-accent fill-accent' : 'text-gray-300'}`} viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-primary-700 text-sm leading-relaxed mb-4 flex-1">&ldquo;{t.content}&rdquo;</p>
-                  <div className="flex items-center gap-2 pt-3 border-t border-primary-100">
-                    <div className="w-9 h-9 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-semibold text-sm">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <div className="font-medium text-sm text-primary-900">{t.name}</div>
-                      <div className="text-xs text-primary-600">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
+          <TestimonialCarousel />
         </div>
       </section>
     </>
+  )
+}
+
+function TestimonialCarousel() {
+  const [current, setCurrent] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
+  const [paused, setPaused] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(false)
+  const trackRef = useRef(null)
+  const [trackWidth, setTrackWidth] = useState(0)
+  const x = useMotionValue(0)
+  const prevCurrent = useRef(current)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReducedMotion(mq.matches)
+    const handler = (e) => setReducedMotion(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      let perPage
+      if (w >= 1280) perPage = 3
+      else if (w >= 768) perPage = 2
+      else perPage = 1
+      setItemsPerPage(perPage)
+      setCurrent(0)
+      if (trackRef.current) setTrackWidth(trackRef.current.offsetWidth)
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  const totalSlides = Math.max(1, Math.ceil(testimonials.length / itemsPerPage))
+
+  useEffect(() => {
+    if (prevCurrent.current !== current && trackWidth > 0) {
+      const target = -(current * trackWidth)
+      animate(x, target, {
+        type: 'tween',
+        duration: reducedMotion ? 0 : 0.5,
+        ease: [0.32, 0.08, 0.24, 1],
+      })
+      prevCurrent.current = current
+    }
+  }, [current, x, reducedMotion, trackWidth])
+
+  useEffect(() => {
+    if (totalSlides <= 1 || paused) return
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % totalSlides)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [totalSlides, paused])
+
+  const goTo = (i) => setCurrent(i)
+  const prev = () => setCurrent(p => (p - 1 + totalSlides) % totalSlides)
+  const next = () => setCurrent(p => (p + 1) % totalSlides)
+
+  const slides = []
+  for (let i = 0; i < testimonials.length; i += itemsPerPage) {
+    slides.push(testimonials.slice(i, i + itemsPerPage))
+  }
+
+  const cardWidth = `${100 / itemsPerPage}%`
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev() }
+    if (e.key === 'ArrowRight') { e.preventDefault(); next() }
+  }
+
+  const handleDragEnd = (_, info) => {
+    if (trackWidth === 0) return
+    const threshold = trackWidth * 0.15
+    if (info.offset.x < -threshold) {
+      next()
+    } else if (info.offset.x > threshold) {
+      prev()
+    } else {
+      const target = -(current * trackWidth)
+      animate(x, target, {
+        type: 'tween',
+        duration: 0.3,
+        ease: 'easeOut',
+      })
+    }
+  }
+
+  const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0 })
+  useEffect(() => {
+    if (trackWidth > 0) {
+      const currentPos = -(current * trackWidth)
+      setDragConstraints({
+        left: current < totalSlides - 1 ? currentPos - trackWidth : currentPos,
+        right: current > 0 ? currentPos + trackWidth : currentPos,
+      })
+    }
+  }, [trackWidth, current, totalSlides])
+
+  return (
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      className="outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-4 rounded-2xl"
+      role="region"
+      aria-label="Testimonial carousel"
+      aria-roledescription="carousel"
+    >
+      <div className="relative">
+        {totalSlides > 1 && (
+          <>
+            <button
+              onClick={prev}
+              className="absolute -left-3 xl:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white shadow-lg shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-600 hover:text-primary-800 hover:border-primary-300 hover:shadow-xl transition-all duration-200 cursor-pointer max-md:hidden"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              className="absolute -right-3 xl:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white shadow-lg shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-600 hover:text-primary-800 hover:border-primary-300 hover:shadow-xl transition-all duration-200 cursor-pointer max-md:hidden"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <button
+              onClick={prev}
+              className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-md shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-700 transition-all duration-200 cursor-pointer"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={next}
+              className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-md shadow-primary-900/10 border border-primary-100 flex items-center justify-center text-primary-700 transition-all duration-200 cursor-pointer"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+        <div ref={trackRef} className="overflow-hidden rounded-2xl">
+          <motion.div
+            className="flex cursor-grab active:cursor-grabbing"
+            drag={reducedMotion ? false : 'x'}
+            onDragEnd={handleDragEnd}
+            dragConstraints={dragConstraints}
+            dragElastic={0.05}
+            dragMomentum={false}
+            style={{ x }}
+          >
+            {slides.map((group, i) => (
+              <div key={i} className="min-w-full flex items-stretch">
+                {group.map((t, idx) => (
+                <div
+                  key={t.id}
+                  className="shrink-0"
+                  style={{ width: cardWidth, paddingLeft: idx === 0 ? 0 : '14px', paddingRight: idx === group.length - 1 ? 0 : '14px' }}
+                >
+                  <div
+                    className="bg-white rounded-2xl p-8 flex flex-col h-full shadow-md shadow-primary-900/5 border border-primary-100/60 relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-900/10 hover:border-primary-200"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`Testimonial ${i * itemsPerPage + idx + 1} of ${testimonials.length}`}
+                  >
+                    <Quote className="absolute -top-5 -right-5 w-24 h-24 text-primary-50 rotate-180 pointer-events-none" />
+                    <div className="flex gap-1 mb-5">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <svg key={j} className={`w-4 h-4 ${j < t.rating ? 'text-accent fill-accent' : 'text-primary-200'}`} viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-primary-800 text-sm leading-relaxed mb-6">
+                        &ldquo;{t.content}&rdquo;
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3.5 pt-4.5 border-t border-primary-100">
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white font-semibold text-sm shrink-0 shadow-sm">
+                        {t.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-semibold text-sm text-primary-900 truncate">{t.name}</div>
+                        <div className="text-sm text-primary-500 truncate mt-0.5">{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <div className="flex items-center justify-center gap-3 mt-8" role="tablist" aria-label="Slides">
+          {Array.from({ length: totalSlides }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                i === current
+                  ? 'bg-primary-700 w-10 h-3'
+                  : 'bg-primary-200 hover:bg-primary-300 w-3 h-3'
+              }`}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   )
 }

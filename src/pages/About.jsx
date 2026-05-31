@@ -89,9 +89,9 @@ export default function About() {
                     { label: 'Category', value: 'Compost Fertilizer & Organic Products' },
                     { label: 'Status', value: 'Active' },
                   ].map((row, i) => (
-                    <div key={i} className="flex justify-between border-b border-primary-200 pb-3 last:border-0 last:pb-0">
+                    <div key={i} className="flex flex-col sm:flex-row sm:justify-between border-b border-primary-200 pb-3 last:border-0 last:pb-0 gap-0.5">
                       <span className="text-primary-600 text-sm">{row.label}</span>
-                      <span className="text-primary-900 font-medium text-sm">{row.value}</span>
+                      <span className="text-primary-900 font-medium text-sm sm:text-right">{row.value}</span>
                     </div>
                   ))}
                 </div>
